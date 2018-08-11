@@ -11,6 +11,7 @@ export const types = {
 export const initialState = {
     user: null,
     isLoading: false,
+    isLoggedIn: false,
     error: null
 };
 
@@ -22,14 +23,18 @@ export default (state = initialState, action) => {
 
         case types.SIGNUP_SUCCESS:
         case types.LOGIN_SUCCESS:
-            return { ...state, isLoading: false, user: action.user };
+            return { ...state,
+                isLoading: false,
+                isLoggedIn: true,
+                user: action.user
+            };
 
         case types.SIGNUP_FAIL:
         case types.LOGIN_FAIL:
             return { ...state, isLoading: false, error: action.error };
 
         case types.SIGN_OUT:
-            return { ...state, user: null };
+            return { ...state, user: null, isLoggedIn: false };
 
         default:
             return state;
@@ -37,7 +42,13 @@ export default (state = initialState, action) => {
 };
 
 export const actions = {
-    signup: (email, password) => ({ type: types.SIGNUP_REQUEST, email, password }),
-    login: (email, password) => ({ type: types.LOGIN_REQUEST, email, password }),
-    logout: () => ({ type: types.LOGOUT }),
+    signupRequest: (email, password) => ({ type: types.SIGNUP_REQUEST, email, password }),
+    signupSuccess: (user) => ({ type: types.SIGNUP_SUCCESS, user }),
+    signupFail: (error) => ({ type: types.SIGNUP_FAIL, error }),
+
+    loginRequest: (email, password) => ({ type: types.LOGIN_REQUEST, email, password }),
+    loginSuccess: (user) => ({ type: types.LOGIN_SUCCESS, user }),
+    loginFail: (error) => ({ type: types.LOGIN_FAIL, error }),
+
+    signout: () => ({ type: types.SIGN_OUT }),
 };

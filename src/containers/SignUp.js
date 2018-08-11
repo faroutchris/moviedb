@@ -1,4 +1,7 @@
 import React, {Component} from "react";
+import {connect} from 'react-redux';
+import {bindActionCreators} from "redux";
+import {actions } from './../reducers/auth';
 import { Row, Col } from '../components/Layout';
 import { Form, FormGroup, Input, InputLabel, ErrorLabel, FormBtn } from './../components/Forms';
 import { Heading1 } from './../components/Typography';
@@ -13,7 +16,7 @@ class SignUp extends Component {
     state = {
         p1: {
             value: '',
-            validate: isLongEnough(8),
+            validate: isLongEnough(6),
             hasError: false,
             errorMessage: 'Password must be at least 8 characters.'
         },
@@ -64,21 +67,28 @@ class SignUp extends Component {
             ...prevState,
             [key]: {...prevState[key], value}
         }))
-    }
+    };
 
     handleSubmit = (event) => {
         event.preventDefault();
 
         if(this.isValid(this.state)) {
-            console.log('is valid');
+            this.props.signupRequest(this.state.email.value, this.state.p1.value);
         }
     };
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <Row>
                     <Heading1>Sign Up</Heading1>
+                </Row>
+                <Row>
+                {this.props.auth.error !== null
+                    ? <ErrorLabel>{this.props.auth.error.message}</ErrorLabel>
+                    : null
+                }
                 </Row>
                 <Form action="#" onSubmit={this.handleSubmit}>
                     <Row>
@@ -90,22 +100,26 @@ class SignUp extends Component {
                                 onChange={this.handleChange}
                                 hasError={this.state['email'].hasError}
                                 type="text" id="email" placeholder="myname@email.com"/>
-                            {this.state['email'].hasError ? <ErrorLabel>{this.state['email'].errorMessage}</ErrorLabel> : null }
+                            {this.state['email'].hasError
+                                ? <ErrorLabel>{this.state['email'].errorMessage}</ErrorLabel>
+                                : null
+                            }
                         </Col>
                         </FormGroup>
                     </Row>
                     <Row>
                         <FormGroup>
                             <Col>
-                                <InputLabel htmlFor="p1">
-                                    {this.state['p1'].hasError ? this.state['p1'].errorMessage : 'Password'}
-                                </InputLabel>
+                                <InputLabel htmlFor="p1">Password</InputLabel>
                                 <Input
                                     value={this.state['p1'].value}
                                     onChange={this.handleChange}
                                     hasError={this.state['p1'].hasError}
                                     type="password" id="p1" placeholder="****"/>
-                                {this.state['p1'].hasError ? <ErrorLabel>{this.state['p1'].errorMessage}</ErrorLabel> : null }
+                                {this.state['p1'].hasError
+                                    ? <ErrorLabel>{this.state['p1'].errorMessage}</ErrorLabel>
+                                    : null
+                                }
                             </Col>
                             <Col>
                                 <InputLabel htmlFor="p2">Retype Password</InputLabel>
@@ -114,12 +128,17 @@ class SignUp extends Component {
                                     onChange={this.handleChange}
                                     hasError={this.state['p2'].hasError}
                                     type="password" id="p2" placeholder="****"/>
-                                {this.state['p2'].hasError ? <ErrorLabel>{this.state['p2'].errorMessage}</ErrorLabel> : null }
+                                {this.state['p2'].hasError
+                                    ? <ErrorLabel>{this.state['p2'].errorMessage}</ErrorLabel>
+                                    : null
+                                }
                             </Col>
                         </FormGroup>
                     </Row>
                     <Row>
-                        <FormBtn type="submit">Submit</FormBtn>
+                        <FormBtn type="submit">
+                            {this.props.auth.isLoading ? 'Loading' : 'Submit' }
+                        </FormBtn>
                     </Row>
                 </Form>
             </div>
@@ -127,4 +146,10 @@ class SignUp extends Component {
     }
 }
 
-export default SignUp;
+const mapStateToProps = state => ({auth: state.auth});
+
+const mapDispatchToProps = dispatch => ({
+    ...bindActionCreators(actions, dispatch)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
