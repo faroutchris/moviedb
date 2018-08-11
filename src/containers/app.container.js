@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import poweredby from './../assets/poweredby.svg'
 import {
+  Switch,
+  Route,
+} from 'react-router-dom';
+import * as routes from './../constants/routes';
+import { auth } from './../api/firebase';
+
+import {
   Wrapper, 
   Scrollable, 
   Layout, 
@@ -10,7 +17,7 @@ import {
   HeaderLeft,
   Menu,
   MenuItem
-} from './../components/layout';
+} from '../components/layout';
 
 class App extends Component {
   render() {
@@ -30,13 +37,18 @@ class App extends Component {
       </Part>
       <Part>
         <Scrollable>
+          <Switch>
+            <Route exact path={routes.LANDING} />
+          </Switch>
           <Row>
             Hello
           </Row>
         </Scrollable>
       </Part>
       <Part flex={'0 1 auto'}>
-        Hello
+        <Row>
+          Footer
+        </Row>
       </Part>
       </Layout>
     </Wrapper>
