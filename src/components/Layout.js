@@ -1,22 +1,8 @@
 import styled from "styled-components";
-
-const colors = {
-  primary: {
-    hex: '#01d277',
-    rgb: '1, 210, 119'
-  },
-  secondary: {
-    hex: '#081c24',
-    rgb: '8, 28, 36'
-  },
-  text: {
-    hex: '#333c4e',
-    rgb: '51, 60, 78'
-  }
-}
+import {colors} from './../constants/theme';
 
 export const globalStyles = `
-  @import url('https://fonts.googleapis.com/css?family=Karla');
+  @import url('https://fonts.googleapis.com/css?family=Karla:400,700&subset=latin-ext');
 
   *, *:before, *:after {
     box-sizing: border-box;
@@ -75,10 +61,18 @@ export const Part = styled.div`
 `;
 
 export const Row = styled.div`
-  padding: 1.5rem 1.5rem 0;
+  padding: 0 1.5rem 0;
   width: 100%;
   display: flex;
   flex-direction: row;
+`;
+
+export const Col = styled.div`
+  flex: 1;
+  margin-right: 0.75rem;
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 export const Scrollable = styled.div`

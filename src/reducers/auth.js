@@ -39,5 +39,5 @@ export default (state = initialState, action) => {
 export const actions = {
     signup: (email, password) => ({ type: types.SIGNUP_REQUEST, email, password }),
     login: (email, password) => ({ type: types.LOGIN_REQUEST, email, password }),
-    logout: () => ({ type: actionTypes.LOGOUT })
+    logout: () => ({ type: types.LOGOUT }),
 };
