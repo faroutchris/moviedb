@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {Header, HeaderLeft, Layout, Menu, MenuItem, Part, Row, Scrollable, Wrapper} from "./Layout";
-import poweredby from "../assets/poweredby.svg";
+import {Layout, Part, Row, Scrollable, Wrapper} from "./Layout";
+import AppHeader from '../containers/AppHeader';
 
 class AppLayout extends Component {
     render() {
@@ -8,15 +8,7 @@ class AppLayout extends Component {
             <Wrapper>
                 <Layout>
                     <Part flex={'0 1 auto'}>
-                        <Header>
-                            <HeaderLeft>Scenema</HeaderLeft>
-                            <Menu>
-                                <MenuItem>Discover</MenuItem>
-                                <MenuItem>Login</MenuItem>
-                                <MenuItem>Signup</MenuItem>
-                                <MenuItem><img src={poweredby} height="48" /></MenuItem>
-                            </Menu>
-                        </Header>
+                        <AppHeader/>
                     </Part>
                     <Part>
                         <Scrollable>
