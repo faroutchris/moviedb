@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import {colors} from './../constants/theme';
 import {NavLink, Link} from 'react-router-dom';
-import React from "react";
 
 export const globalStyles = `
   @import url('https://fonts.googleapis.com/css?family=Karla:400,700&subset=latin-ext');

@@ -11,7 +11,7 @@ const MenuLoggedOut = () => {
         <Menu>
             <MenuItem><MenuLink activeClassName="active" to={routes.LOG_IN}>Login</MenuLink></MenuItem>
             <MenuItem><MenuLink activeClassName="active" to={routes.SIGN_UP}>Signup</MenuLink></MenuItem>
-            <MenuItem><img src={poweredby} height="48" /></MenuItem>
+            <MenuItem><img alt="Powered by The Movie Database" src={poweredby} height="48" /></MenuItem>
         </Menu>
     )
 };
@@ -22,7 +22,7 @@ const MenuLoggedIn = (props) => {
             <MenuItem>Discover</MenuItem>
             <MenuItem>My account</MenuItem>
             <MenuItem><MenuBtn onClick={props.signout}>Sign out</MenuBtn></MenuItem>
-            <MenuItem><img src={poweredby} height="48" /></MenuItem>
+            <MenuItem><img alt="Powered by The Movie Database" src={poweredby} height="48" /></MenuItem>
         </Menu>
     )
 };

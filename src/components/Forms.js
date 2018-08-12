@@ -1,4 +1,4 @@
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import {colors} from "./../constants/theme";
 
 export const Form = styled.form`
