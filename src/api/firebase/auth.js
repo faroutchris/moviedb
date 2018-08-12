@@ -8,4 +8,3 @@ export const signOut = () => auth.signOut();
 export const updatePassword = (password) => auth.currentUser.updatePassword(password);
 export const getToken = () => auth.currentUser.getIdToken();
 export const sendEmailVerification = () => auth.currentUser.sendEmailVerification();
-

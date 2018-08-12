@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import {colors} from './../constants/theme';
 import {NavLink} from 'react-router-dom';
+import React from "react";
 
 export const globalStyles = `
   @import url('https://fonts.googleapis.com/css?family=Karla:400,700&subset=latin-ext');
@@ -104,18 +105,22 @@ export const MenuItem = styled.div`
   }  
 `;
 
-const activeClassName = 'active';
-export const MenuLink = styled(NavLink).attrs({activeClassName})`
+export const MenuLink = styled(NavLink)`
     color: ${colors.white.hex};
     text-decoration: none;
     padding: 1rem 0;
-    transition: all 0.125s ease-in;
+    transition: color 0.125s ease-in;
     &:hover {
         color: ${colors.primary.hex}
     }
-    &.${activeClassName} {
+    &.active {
         color: ${colors.primary.hex}
+        border-bottom: 1px solid ${colors.primary.hex}
     }
+`;
+
+export const MenuBtn = MenuLink.withComponent('span').extend`
+    cursor: pointer;
 `;
 
 export const HeaderLeft = styled.div`

@@ -36,7 +36,7 @@ class Login extends Component {
                     <Heading1>Log in</Heading1>
                 </Row>
                 <Row>
-                    {this.props.auth.error !== null && this.props.auth.code
+                    {this.props.auth.error !== null && this.props.auth.error.code
                         ? <ErrorLabel>{this.props.auth.error.message}</ErrorLabel>
                         : null
                     }
