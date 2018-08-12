@@ -8,15 +8,15 @@ export const Heading = styled.h1`
 `;
 
 export const Heading1 = Heading.withComponent('h1').extend`
-    font-size: 36px;
+    font-size: 2.5rem;
 `;
 
 export const Heading2 = Heading.withComponent('h2').extend`
-    font-size: 28px;
+    font-size: 2rem;
 `;
 
 export const Heading3 = Heading.withComponent('h3').extend`
-    font-size: 20px;
+    font-size: 1.6rem;
 `;
 
 export const Paragraph = styled.p`

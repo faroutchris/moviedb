@@ -29,7 +29,6 @@ class Login extends Component {
     };
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <Row>
@@ -66,7 +65,7 @@ class Login extends Component {
                     </Row>
                     <Row>
                         <FormBtn type="submit">
-                            {this.props.auth.isLoading ? 'Loading' : 'Sign in' }
+                            {this.props.auth.isLoading ? 'Loading' : 'Log in' }
                         </FormBtn>
                     </Row>
                 </Form>

@@ -8,10 +8,13 @@ export default function* loginRequestSaga(action) {
     try{
         const res = yield call(auth.signInWithEmailAndPassword, action.email, action.password);
         if (res) {
+            yield call(console.log, res);
             yield put(actions.loginSuccess({
                 email: res.user.email,
                 token: auth.getToken(),
-                uid: res.user.uid
+                uid: res.user.uid,
+                //isNewUser: res.user.additionalUserInfo.isNewUser,
+                //emailVerified: res.user.emailVerified
             }));
             yield call(appHistory.push, routes.LANDING);
         }

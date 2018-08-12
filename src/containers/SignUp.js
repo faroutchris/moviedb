@@ -1,7 +1,7 @@
-import React, {Component} from "react";
-import {connect} from 'react-redux';
-import {bindActionCreators} from "redux";
-import {actions } from './../reducers/auth';
+import React, { Component } from "react";
+import { connect } from 'react-redux';
+import { bindActionCreators } from "redux";
+import { actions } from './../reducers/auth';
 import { Row, Col } from '../components/Layout';
 import { Form, FormGroup, Input, InputLabel, ErrorLabel, FormBtn } from './../components/Forms';
 import { Heading1 } from './../components/Typography';
@@ -137,7 +137,7 @@ class SignUp extends Component {
                     </Row>
                     <Row>
                         <FormBtn type="submit">
-                            {this.props.auth.isLoading ? 'Loading' : 'Submit' }
+                            {this.props.auth.isLoading ? 'Loading' : 'Sign up' }
                         </FormBtn>
                     </Row>
                 </Form>

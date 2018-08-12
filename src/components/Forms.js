@@ -19,14 +19,14 @@ export const Input = styled.input`
     padding: 0.5rem 1rem;
     margin: 0 0;
     font-family: 'Karla', sans-serif;
-    font-size: 13px;
+    font-size: 0.85rem;
     border: ${props => props.hasError ? `1px solid rgba(${colors.error.rgb}, 0.8)` : `1px solid rgba(${colors.secondary.rgb}, 0.05)`};
 `;
 
 export const InputLabel = styled.label`
     display: inline-block;
     padding: 0 0.5rem 0.5rem;
-    font-size: 14px;
+    font-size: 0.85rem;
 `;
 
 export const ErrorLabel = InputLabel.withComponent('span').extend`
@@ -41,5 +41,5 @@ export const FormBtn = styled.button`
     border-radius: 3px;
     font-family: 'Karla', sans-serif;
     font-weight: bold;
-    font-size: 13px;
+    font-size: 0.85rem;
 `;

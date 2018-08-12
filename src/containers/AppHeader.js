@@ -1,13 +1,12 @@
 import React from "react";
 import {connect} from "react-redux";
 import {withRouter} from 'react-router-dom';
-import {Header, HeaderLeft, Menu, MenuItem, MenuLink, MenuBtn} from "../components/Layout";
+import {Header, HeaderLeft, Menu, MenuItem, MenuLink, MenuBtn, MenuBtn2} from "../components/Layout";
 import * as routes from "../constants/routes";
 import poweredby from "../assets/poweredby.svg";
-import {bindActionCreators} from "redux";
 import {actions} from "../reducers/auth";
 
-const MenuLoggedOut = (props) => {
+const MenuLoggedOut = () => {
     return (
         <Menu>
             <MenuItem><MenuLink activeClassName="active" to={routes.LOG_IN}>Login</MenuLink></MenuItem>
@@ -29,10 +28,9 @@ const MenuLoggedIn = (props) => {
 };
 
 function AppHeader(props) {
-    console.log(props);
     return (
         <Header>
-            <HeaderLeft>Scenema</HeaderLeft>
+            <HeaderLeft><MenuBtn2 to={routes.LANDING}>Scenema</MenuBtn2></HeaderLeft>
             {props.auth.isLoggedIn ? <MenuLoggedIn signout={props.signout}/> : <MenuLoggedOut/>}
         </Header>
     );

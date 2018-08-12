@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import {colors} from './../constants/theme';
-import {NavLink} from 'react-router-dom';
+import {NavLink, Link} from 'react-router-dom';
 import React from "react";
 
 export const globalStyles = `
@@ -14,7 +14,7 @@ export const globalStyles = `
     font-family: 'Karla', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-size: 16px;
+    font-size: 15px;
   }
   
   html {
@@ -122,6 +122,8 @@ export const MenuLink = styled(NavLink)`
 export const MenuBtn = MenuLink.withComponent('span').extend`
     cursor: pointer;
 `;
+
+export const MenuBtn2 = MenuLink.withComponent(Link);
 
 export const HeaderLeft = styled.div`
 `;
