@@ -18,5 +18,9 @@ export const colors = {
     white: {
         hex: '#fff',
         rgb: '255, 255, 255'
+    },
+    link: {
+        hex: '#79589f',
+        rgb: '121, 88, 159',
     }
 };

@@ -31,6 +31,10 @@ export const globalStyles = `
     background: white
     color: ${colors.text.hex}
   }
+  
+  a {
+    color: ${colors.text.hex};
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -69,7 +73,7 @@ export const Row = styled.div`
 `;
 
 export const Col = styled.div`
-  flex: 1;
+  flex: ${props => props.flex || 1};
   margin-right: 0.75rem;
   &:last-child {
     margin-right: 0;
@@ -108,6 +112,7 @@ export const MenuLink = styled(NavLink)`
     position: relative;
     color: ${colors.white.hex};
     text-decoration: none;
+    font-weight: bold;
     padding: 1rem 0;
     transition: color 0.125s ease-in;
     &:before {
