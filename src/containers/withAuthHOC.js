@@ -2,27 +2,26 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import {withRouter} from 'react-router-dom';
-import {auth, firebase} from '../api/firebase';
+import {firebase} from '../api/firebase';
 import * as routes from '../constants/routes';
 import {actions} from './../reducers/auth';
 
 const withAuth = (Comp) => {
     class WithAuth extends Component {
         componentWillMount() {
-            firebase.auth.onAuthStateChanged(authUser => {
-
-                if(authUser && this.props.auth.isLoggedIn === false) {
-                    this.props.autoLoginRequest(authUser);
-                }
-                else if(!authUser && this.props.auth.isLoggedIn === false) {
+            this.unsubscribe = firebase.auth.onAuthStateChanged(authUser => {
+                if(!authUser && this.props.auth.isLoggedIn === false) {
                     this.props.history.push(routes.LOG_IN);
                 }
-
             });
         }
 
+        componentWillUnmount() {
+            this.unsubscribe();
+        }
+
         render() {
-            return this.props.isLoggedIn ? <Comp/> : null;
+            return this.props.auth.isLoggedIn ? <Comp/> : null;
         }
     }
 
@@ -30,11 +29,7 @@ const withAuth = (Comp) => {
         auth: state.auth
     });
 
-    const mapDispatchToProps = dispatch => ({
-        ...bindActionCreators(actions, dispatch)
-    });
-
-    return withRouter(connect(mapStateToProps, mapDispatchToProps)(WithAuth));
+    return withRouter(connect(mapStateToProps, {})(WithAuth));
 };
 
 export default withAuth
