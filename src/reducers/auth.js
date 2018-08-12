@@ -3,6 +3,7 @@ export const types = {
     SIGNUP_SUCCESS: 'AUTH/SIGNUP_SUCCESS',
     SIGNUP_FAIL: 'AUTH/SIGNUP_FAIL',
     LOGIN_REQUEST: 'AUTH/LOGIN_REQUEST',
+    AUTO_LOGIN_REQUEST: 'AUTH/AUTO_LOGIN_REQUEST',
     LOGIN_SUCCESS: 'AUTH/LOGIN_SUCCESS',
     LOGIN_FAIL: 'AUTH/LOGIN_FAIL',
     SIGN_OUT: 'AUTH/SIGN_OUT'
@@ -50,5 +51,6 @@ export const actions = {
     loginSuccess: (user) => ({ type: types.LOGIN_SUCCESS, user }),
     loginFail: (error) => ({ type: types.LOGIN_FAIL, error }),
 
+    autoLoginRequest: (user) => ({ type: types.AUTO_LOGIN_REQUEST, user }),
     signout: () => ({ type: types.SIGN_OUT }),
 };
