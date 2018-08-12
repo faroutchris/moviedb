@@ -20,7 +20,10 @@ export const Input = styled.input`
     margin: 0 0;
     font-family: 'Karla', sans-serif;
     font-size: 0.85rem;
-    border: ${props => props.hasError ? `1px solid rgba(${colors.error.rgb}, 0.8)` : `1px solid rgba(${colors.secondary.rgb}, 0.05)`};
+    border: ${props => 
+        props.hasError 
+            ? `1px solid rgba(${colors.error.rgb}, 0.8)` 
+            : `1px solid rgba(${colors.secondary.rgb}, 0.05)`};
 `;
 
 export const InputLabel = styled.label`
@@ -42,4 +45,8 @@ export const FormBtn = styled.button`
     font-family: 'Karla', sans-serif;
     font-weight: bold;
     font-size: 0.85rem;
+    
+    &:disabled {
+        background: rgba(${colors.secondary.rgb}, 0.5);
+    }
 `;

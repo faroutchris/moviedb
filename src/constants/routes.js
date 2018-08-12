@@ -2,4 +2,4 @@ export const LANDING = '/';
 export const SIGN_UP = '/signup';
 export const LOG_IN = '/signin';
 export const ACCOUNT = '/account';
-export const PASSWORD_FORGOT = '/forgot-password';
+export const RESET_PASSWORD = '/reset-password';

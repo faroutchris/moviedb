@@ -19,8 +19,8 @@ const MenuLoggedOut = () => {
 const MenuLoggedIn = (props) => {
     return (
         <Menu>
-            <MenuItem>Discover</MenuItem>
-            <MenuItem>My account</MenuItem>
+            <MenuItem><MenuLink exact activeClassName="active" to={routes.LANDING}>Discover</MenuLink></MenuItem>
+            <MenuItem><MenuLink activeClassName="active" to={routes.ACCOUNT}>My Account</MenuLink></MenuItem>
             <MenuItem><MenuBtn onClick={props.signout}>Sign out</MenuBtn></MenuItem>
             <MenuItem><img alt="Powered by The Movie Database" src={poweredby} height="48" /></MenuItem>
         </Menu>

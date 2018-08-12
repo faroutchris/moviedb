@@ -6,10 +6,8 @@ export const signInWithEmailAndPassword = (email, password) => auth.signInWithEm
 export const sendPasswordResetEmail = (email) => auth.sendPasswordResetEmail(email);
 export const signOut = () => auth.signOut();
 
-export const updatePassword = (password) => auth.currentUser.updatePassword(password);
 export const getToken = () => auth.currentUser.getIdToken();
 export const sendEmailVerification = () => auth.currentUser.sendEmailVerification();
-
 export const getUserSession = () => new Promise((resolve, reject) => {
     const rejectError = new Error('No active session.');
     firebase.auth.onAuthStateChanged(

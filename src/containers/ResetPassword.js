@@ -12,7 +12,6 @@ class Login extends Component {
     self = this;
 
     state = {
-        password: '',
         email: ''
     };
 
@@ -24,21 +23,24 @@ class Login extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-
-        if(!!this.state.email && !!this.state.password) {
-            this.props.loginRequest(this.state.email, this.state.password);
-        }
+        this.props.resetPasswordRequest(this.state.email);
     };
 
     render() {
         return (
             <div>
                 <Row>
-                    <Heading1>Log in</Heading1>
+                    <Heading1>Reset your password</Heading1>
                 </Row>
                 <Row>
                     {this.props.auth.error !== null && this.props.auth.error.code
                         ? <ErrorLabel>{this.props.auth.error.message}</ErrorLabel>
+                        : null
+                    }
+                </Row>
+                <Row>
+                    {this.props.auth.passwordResetSent
+                        ? <InputLabel>A new password has been sent to your email.</InputLabel>
                         : null
                     }
                 </Row>
@@ -55,23 +57,10 @@ class Login extends Component {
                         </FormGroup>
                     </Row>
                     <Row>
-                        <FormGroup>
-                            <Col>
-                                <InputLabel htmlFor="password">Password</InputLabel>
-                                <Input
-                                    value={this.state.password}
-                                    onChange={this.handleChange}
-                                    type="password" id="password" placeholder="****"/>
-                            </Col>
-                        </FormGroup>
-                    </Row>
-                    <Row>
                         <Col>
-                            <FormBtn type="submit" disabled={!this.state.email || !this.state.password}>
-                                {this.props.auth.isLoading ? 'Loading' : 'Log in' }
+                            <FormBtn type="submit" disabled={!this.state.email}>
+                                {this.props.auth.isLoading ? 'Loading' : 'Reset' }
                             </FormBtn>
-                            <Paragraph>Don't have an account yet? <Link to={routes.SIGN_UP}>Sign up here!</Link></Paragraph>
-                            <Link to={routes.RESET_PASSWORD}>Forgot your password?</Link>
                         </Col>
                     </Row>
                 </Form>

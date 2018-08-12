@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { bindActionCreators } from "redux";
+import {Link} from 'react-router-dom';
 import { actions } from './../reducers/auth';
 import { Row, Col } from '../components/Layout';
 import { Form, FormGroup, Input, InputLabel, ErrorLabel, FormBtn } from './../components/Forms';
-import { Heading1 } from './../components/Typography';
+import { Heading1, Paragraph } from './../components/Typography';
+import * as routes from './../constants/routes';
 
 const isLongEnough = length => string => string.length >= length;
 const isEqualTo = fieldName => (string, state) => string === state[fieldName].value;
@@ -135,9 +137,12 @@ class SignUp extends Component {
                         </FormGroup>
                     </Row>
                     <Row>
-                        <FormBtn type="submit">
-                            {this.props.auth.isLoading ? 'Loading' : 'Sign up' }
-                        </FormBtn>
+                        <Col>
+                            <FormBtn type="submit">
+                                {this.props.auth.isLoading ? 'Loading' : 'Sign up' }
+                            </FormBtn>
+                            <Paragraph>Already have an account? <Link to={routes.LOG_IN}>Log in here</Link></Paragraph>
+                        </Col>
                     </Row>
                 </Form>
             </div>

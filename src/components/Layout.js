@@ -105,16 +105,30 @@ export const MenuItem = styled.div`
 `;
 
 export const MenuLink = styled(NavLink)`
+    position: relative;
     color: ${colors.white.hex};
     text-decoration: none;
     padding: 1rem 0;
     transition: color 0.125s ease-in;
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0.65rem;
+        display: block;
+        width: 100%;
+        transform: scaleX(0);
+        height: 1px;
+        background: ${colors.primary.hex};
+        transition: all 0.125s ease-in;
+    }
     &:hover {
         color: ${colors.primary.hex}
     }
     &.active {
+        &:before {
+            transform: scaleX(1);        
+        }
         color: ${colors.primary.hex}
-        border-bottom: 1px solid ${colors.primary.hex}
     }
 `;
 
