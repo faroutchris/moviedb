@@ -5,11 +5,9 @@ import {
     withRouter,
 } from 'react-router-dom';
 import {bindActionCreators} from 'redux';
-import {firebase} from "../api/firebase";
 import * as routes from './../constants/routes';
 import withAuth from './withAuthHOC';
 import {actions} from './../reducers/auth';
-
 
 import AppLayout from "../components/AppLayout";
 import SignUp from './SignUp';
@@ -20,15 +18,7 @@ import connect from "react-redux/es/connect/connect";
 class App extends Component {
 
     componentWillMount() {
-        this.unsubscribe = firebase.auth.onAuthStateChanged(authUser => {
-            if(authUser && this.props.auth.isLoggedIn === false) {
-                this.props.autoLoginRequest(authUser);
-            }
-        });
-    }
-
-    componentWillUnmount() {
-        this.unsubscribe();
+        this.props.autoLoginRequest(this.props.auth.isLoggedIn);
     }
 
     render() {

@@ -51,6 +51,6 @@ export const actions = {
     loginSuccess: (user) => ({ type: types.LOGIN_SUCCESS, user }),
     loginFail: (error) => ({ type: types.LOGIN_FAIL, error }),
 
-    autoLoginRequest: (user) => ({ type: types.AUTO_LOGIN_REQUEST, user }),
+    autoLoginRequest: (isLoggedIn) => ({ type: types.AUTO_LOGIN_REQUEST, isLoggedIn }),
     signout: () => ({ type: types.SIGN_OUT }),
 };
