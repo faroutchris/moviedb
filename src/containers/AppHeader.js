@@ -1,6 +1,5 @@
 import React from "react";
-import {Header, HeaderLeft, Menu, MenuItem} from "../components/Layout";
-import {Link} from "react-router-dom";
+import {Header, HeaderLeft, Menu, MenuItem, MenuLink} from "../components/Layout";
 import * as routes from "../constants/routes";
 import poweredby from "../assets/poweredby.svg";
 import { connect } from "react-redux";
@@ -8,8 +7,8 @@ import { connect } from "react-redux";
 const MenuLoggedOut = (props) => {
     return (
         <Menu>
-            <MenuItem><Link to={routes.LOG_IN}>Login</Link></MenuItem>
-            <MenuItem><Link to={routes.SIGN_UP}>Signup</Link></MenuItem>
+            <MenuItem><MenuLink activeClassName="active" to={routes.LOG_IN}>Login</MenuLink></MenuItem>
+            <MenuItem><MenuLink activeClassName="active" to={routes.SIGN_UP}>Signup</MenuLink></MenuItem>
             <MenuItem><img src={poweredby} height="48" /></MenuItem>
         </Menu>
     )

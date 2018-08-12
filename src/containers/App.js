@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   Switch,
   Route,
+  withRouter
 } from 'react-router-dom';
 import * as routes from './../constants/routes';
 import AppLayout from "../components/AppLayout";
@@ -21,4 +22,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default withRouter(App);
