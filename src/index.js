@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import {appHistory} from "./history";
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 /**
@@ -31,11 +32,11 @@ const store = createStore(
 sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
-  <BrowserRouter>
+  <Router history={appHistory}>
       <Provider store={store}>
           <App />
       </Provider>
-  </BrowserRouter>, 
+  </Router>,
   document.getElementById('root')
 );
 registerServiceWorker();

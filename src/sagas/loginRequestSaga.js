@@ -1,6 +1,8 @@
 import { call, put } from 'redux-saga/effects';
 import { auth } from './../api/firebase';
 import { actions } from './../reducers/auth';
+import { appHistory } from "../history";
+import * as routes from './../constants/routes';
 
 export default function* loginRequestSaga(action) {
     try{
@@ -11,6 +13,7 @@ export default function* loginRequestSaga(action) {
                 token: auth.getToken(),
                 uid: res.user.uid
             }));
+            yield call(appHistory.push, routes.LANDING);
         }
     } catch(error) {
         console.log(error);
